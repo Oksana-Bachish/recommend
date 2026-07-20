@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  fastapi_recommend:
+    build: .
+    container_name: fastapi_recommend_app
+    ports:
+      - "8085:8000"
+    env_file:
+      - .env.dev
+    depends_on:
+      - recommend_db
+    volumes:
+      - .:/app
+
+  recommend_db:
+    image: postgres:17-bookworm
+    container_name: fastapi_recommend_db
+    ports:
+      - "5433:5432"
+    env_file:
+      - .env.dev
+    volumes:
+      - postgres_data_recommend:/var/lib/postgresql/data
+
+volumes:
+  postgres_data_recommend:

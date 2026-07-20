@@ -1,0 +1,12 @@
+.env
+.env.dev
+.env.prod
+
+
+__pycache__/
+venv/
+*.pyc
+.pytest_cache/
+
+.venv/
+.idea/

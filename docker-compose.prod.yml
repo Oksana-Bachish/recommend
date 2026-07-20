@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  fastapi_recommend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: local_fastapi_app_prod
+    ports:
+      - "8085:8000"
+    env_file:
+      - .env.prod
+    restart: always
+
+networks:
+  default:
+    name: backend_app_net
+    external: true
