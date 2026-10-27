@@ -58,6 +58,11 @@ docker --version
 docker compose up -d --build
 ```
 
+7. Проект покрыт интеграционными тестами с использованием `pytest` и `httpx.AsyncClient`. Для запуска тестов выполните:
+```bash
+docker compose exec fastapi_recommend python -m pytest
+```
+
 После запуска Swagger-документация API будет доступна по адресу: `http://127.0.0.1:8085/docs`
 
 ## 🐳 Развертывание на сервере (Production)
