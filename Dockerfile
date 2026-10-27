@@ -5,9 +5,12 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-COPY requirements.txt .
+RUN pip install --no-cache-dir uv
+COPY pyproject.toml .
 
-RUN pip install --no-cache-dir --upgrade pip && pip install --no-cache-dir -r requirements.txt
+ENV PATH="/root/.local/bin:/usr/local/bin:${PATH}"
+
+RUN uv pip install --system --no-cache -e ".[dev]"
 
 COPY . .
 
